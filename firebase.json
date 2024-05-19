@@ -1,1 +1,9 @@
-{}
+{
+  "hosting": [
+    {
+      "target": "szte-forum-web",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

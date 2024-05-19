@@ -35,8 +35,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1mb",
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -90,6 +90,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "szte-forum-web:build:production",
+              "serveTarget": "szte-forum-web:serve:production"
+            },
+            "development": {
+              "buildTarget": "szte-forum-web:build:development",
+              "serveTarget": "szte-forum-web:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "forum-mobile-1f9c7": {
+      "hosting": {
+        "szte-forum-web": [
+          "szte-forum"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "forum-mobile-1f9c7"
+  }
+}

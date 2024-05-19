@@ -1,0 +1,8 @@
+@if(avatarUrl) {
+  <div [ngStyle]="{'width.px': size * 4, 'height.px': size * 4}" class="rounded-full bg-black overflow-hidden">
+    <img [src]="avatarUrl" alt="User Avatar" class="h-full w-full object-cover">
+  </div>
+
+} @else {
+  <fa-icon [icon]="faUser" [ngStyle]="{'font-size.px': size * 4}" class="text-black"></fa-icon>
+}

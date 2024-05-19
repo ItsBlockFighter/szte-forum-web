@@ -1,0 +1,32 @@
+@if (author && post) {
+  <mat-card class="border rounded-md border-zinc-200 shadow-md post-animation">
+    <mat-card-header>
+      <app-user-avatar mat-card-avatar [userId]="author.id"></app-user-avatar>
+      <mat-card-title>{{ author.username }}</mat-card-title>
+      <mat-card-subtitle>{{ author.email }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="py-3">
+      @if (editing) {
+        <mat-form-field appearance="fill" class="w-full">
+          <textarea matInput [(ngModel)]="editedContent" class="w-full"></textarea>
+        </mat-form-field>
+      } @else {
+        <p>{{ post.content }}</p>
+      }
+    </mat-card-content>
+    <mat-card-footer class="pl-4 pb-3 mr-2">
+      <span class="text-gray-500">Utoljára módosítva: {{ post.lastUpdate | timestamp }}</span>
+      @if (user && author.id === user.id) {
+        <div class="flex justify-end">
+          @if (editing) {
+            <button mat-button color="primary" (click)="onSave()">Mentés</button>
+            <button mat-button color="warn" (click)="onCancel()">Mégse</button>
+          } @else {
+            <button mat-button color="primary" (click)="onEdit()">Szerkesztés</button>
+            <button mat-button color="warn" (click)="onDelete()">Törlés</button>
+          }
+        </div>
+      }
+    </mat-card-footer>
+  </mat-card>
+}

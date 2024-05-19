@@ -1,0 +1,4 @@
+.thread-animation {
+  animation: backInUp;
+  animation-duration: 1.5s;
+}

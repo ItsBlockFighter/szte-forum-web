@@ -1,0 +1,4 @@
+.custom-animation {
+  animation: fadeIn;
+  animation-duration: 3s;
+}

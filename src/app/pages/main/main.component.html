@@ -1,0 +1,30 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <div class="col-span-2">
+    @if(categories) {
+      <ng-container *ngFor="let category of categories">
+        <app-category-item [category]="category"></app-category-item>
+      </ng-container>
+    } @else {
+      <app-loading></app-loading>
+    }
+  </div>
+  <div class="col-span-1">
+    <div class="bg-white p-4 rounded-md shadow-md border border-zinc-150 stats-animation">
+      <h2 class="text-lg font-semibold">Statisztika</h2>
+      <div class="flex justify-between space-x-2 mt-2">
+        <div>
+          <p class="text-sm text-gray-500">Összes Felhasználó</p>
+          <p class="text-lg font-semibold stats-count-animation">{{ usersCount | count }}</p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500">Összes Téma</p>
+          <p class="text-lg font-semibold stats-count-animation">{{ threadsCount | count }}</p>
+        </div>
+        <div>
+          <p class="text-sm text-gray-500">Összes Megjegyezés</p>
+          <p class="text-lg font-semibold stats-count-animation">{{ postsCount | count }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

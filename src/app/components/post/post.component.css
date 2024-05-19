@@ -1,0 +1,4 @@
+.post-animation {
+  animation: slideInUp;
+  animation-duration: 1s;
+}

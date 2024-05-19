@@ -1,0 +1,13 @@
+<div class="flex flex-col items-center justify-center w-96 m-8">
+  <h2 class="text-2xl font-bold">Új téma</h2>
+  <mat-dialog-content class="flex flex-col items-start justify-start space-y-3 w-full">
+    <mat-label class="text-zinc-500 font-medium">Cím</mat-label>
+    <input matInput placeholder="Cím" [(ngModel)]="data.name" class="w-full border border-zinc-300 p-2 rounded-md">
+    <mat-label class="text-zinc-500 font-medium">Üzenet</mat-label>
+    <textarea matInput placeholder="Üzenet" [(ngModel)]="data.content" class="w-full border border-zinc-300 p-2 rounded-md"></textarea>
+  </mat-dialog-content>
+  <mat-dialog-actions class="space-x-5">
+    <button mat-raised-button color="primary" [mat-dialog-close]="data">Létrehozás</button>
+    <button mat-raised-button (click)="onNoClick()">Mégse</button>
+  </mat-dialog-actions>
+</div>

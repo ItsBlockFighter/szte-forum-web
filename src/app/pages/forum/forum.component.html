@@ -1,0 +1,34 @@
+@if (forum) {
+  <mat-card class="border rounded-md border-zinc-200 shadow-md card-animation">
+    <mat-card-header class="mb-5">
+      <mat-card-title>{{ forum.name }}</mat-card-title>
+      <mat-card-subtitle>{{ forum.description }}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+} @else {
+  <app-loading></app-loading>
+}
+<mat-divider class="my-3"></mat-divider>
+@if (forums) {
+  <ng-container *ngFor="let forum of forums">
+    <app-forum-item [forum]="forum"></app-forum-item>
+  </ng-container>
+  @if (forums.length > 0) {
+    <mat-divider class="my-3"></mat-divider>
+  }
+} @else {
+  <app-loading></app-loading>
+}
+<div class="flex justify-end pb-3">
+  <button mat-raised-button color="primary" (click)="openNewThreadDialog()">
+    <fa-icon [icon]="faFolderPlus"></fa-icon>
+    <span class="ml-2">Új téma</span>
+  </button>
+</div>
+@if (threads) {
+  <ng-container *ngFor="let thread of threads">
+    <app-thread-item [thread]="thread"></app-thread-item>
+  </ng-container>
+} @else {
+  <app-loading></app-loading>
+}

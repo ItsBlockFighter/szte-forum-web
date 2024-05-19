@@ -1,0 +1,51 @@
+@if (thread) {
+  <div class="">
+    <div class="grid grid-cols-2 gap-2 border rounded-md border-zinc-200 shadow-md thread-card-animation">
+      <mat-card class="border-0 shadow-none">
+        <mat-card-header class="flex flex-col items-start justify-start mb-5">
+          <mat-card-title class="mb-3 w-full">{{ thread.title }}</mat-card-title>
+          @if (author) {
+            <mat-card-subtitle>
+              <div class="flex flex-row">
+                <app-user-avatar [userId]="author.id"></app-user-avatar>
+                <span class="ml-2">{{ author.username }}</span>
+              </div>
+              <mat-divider class="my-3"></mat-divider>
+              <span>Utoljára módosítva: {{ thread.lastUpdate | timestamp }}</span>
+            </mat-card-subtitle>
+          }
+        </mat-card-header>
+      </mat-card>
+      <div class="flex items-center justify-end mt-auto mb-2 mr-2" *ngIf="author && user && author.id == user.id">
+        <button mat-button color="warn" (click)="onDeleteClick()">Törlés</button>
+      </div>
+    </div>
+  </div>
+} @else {
+  <app-loading></app-loading>
+}
+<mat-divider class="my-5"></mat-divider>
+@if (posts) {
+  <ng-container *ngFor="let post of dataSource.data">
+    <div class="pb-5">
+      <app-post (save)="savePost($event)" (delete)="deletePost($event)" [post]="post"></app-post>
+    </div>
+  </ng-container>
+  <mat-paginator [length]="totalSize" [pageSize]="pageSize" [pageIndex]="currentPage" (page)="pageChangeEvent($event)"
+                 [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Oldal kiválasztása">
+  </mat-paginator>
+}
+@if (thread && !thread.locked) {
+  <form [formGroup]="form" class="flex items-center">
+    <mat-form-field class="w-full">
+      <mat-label>Üzenet</mat-label>
+      <textarea matInput formControlName="message" placeholder="Message" class="w-full" required></textarea>
+      @if (form.get('message')?.errors && form.touched) {
+        <mat-error *ngIf="form.get('message')?.errors">Az üzenet megadása kötelező</mat-error>
+      }
+    </mat-form-field>
+  </form>
+  <div class="flex items-center">
+    <button mat-raised-button color="primary" class="ml-3 mb-5" (click)="onSendMessage()">Küldés</button>
+  </div>
+}

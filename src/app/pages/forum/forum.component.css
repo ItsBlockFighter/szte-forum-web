@@ -1,0 +1,4 @@
+.card-animation {
+  animation: fadeIn;
+  animation-duration: 2s;
+}

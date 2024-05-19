@@ -1,0 +1,42 @@
+<div class="flex justify-center items-center m-12">
+  <div class="w-96">
+    <img ngSrc="assets/logo.png" alt="logo" class="mx-auto mb-6" style="max-height: 8rem; max-width: 8rem;" height="946"
+         width="1248" priority/>
+    <h1 class="text-3xl font-bold text-center mb-6">Regisztráció</h1>
+    <form class="space-y-4" [formGroup]="form">
+      <div>
+        <mat-form-field class="w-full">
+          <mat-label>Felhasználónév</mat-label>
+          <input matInput formControlName="username" required />
+          @if (form.get('username')?.errors && form.touched) {
+            <mat-error *ngIf="form.get('username')?.errors">A felhasználónév megadása kötelező</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="w-full">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" required />
+          @if (form.get('email')?.errors && form.touched) {
+            <mat-error *ngIf="form.get('email')?.errors">Az email cím megadása kötelező</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="w-full">
+          <mat-label>Jelszó</mat-label>
+          <input matInput formControlName="password" type="password" required />
+          @if (form.get('password')?.errors && form.touched) {
+            <mat-error *ngIf="form.get('password')?.errors">A jelszó megadása kötelező</mat-error>
+          }
+        </mat-form-field>
+      </div>
+      <div>
+        <button type="button" class="w-full bg-blue-500 text-white rounded p-2" (click)="register()">Regisztráció</button>
+      </div>
+      <div>
+        <button type="submit" class="w-full bg-gray-300 text-gray-800 rounded p-2" routerLink="/login">Bejelentkezés</button>
+      </div>
+    </form>
+  </div>
+</div>

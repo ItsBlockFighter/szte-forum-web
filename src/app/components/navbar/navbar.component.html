@@ -1,0 +1,99 @@
+<nav
+  class="px-4 py-2 mx-auto text-zinc-900 bg-white border shadow-md rounded-xl border-white/80 bg-opacity-80 backdrop-blur-2xl backdrop-saturate-200 lg:px-8 lg:py-4">
+  <div class="container flex items-center justify-between mx-auto text-blue-gray-900">
+    <a routerLink="/"
+       class="mr-4 block cursor-pointer py-1.5 font-sans text-base font-medium leading-relaxed text-inherit antialiased">
+      <span class="flex items-center gap-x-2">
+        <img src="assets/logo.png" alt="SZTE Forum (Unofficial)" class="w-8 h-8">
+        <span class="hidden lg:inline font-bold">SZTE Forum (Unofficial)</span>
+      </span>
+    </a>
+    <div class="hidden lg:block">
+      <ul class="flex flex-col items-center gap-2 mt-4 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+        <li class="flex items-center p-1 font-sans text-sm antialiased font-medium leading-normal gap-x-2 text-blue-gray-900">
+          <fa-icon [icon]="faHouse"></fa-icon>
+          <a [routerLink]="['/']" class="flex items-center">Főoldal</a>
+        </li>
+        <li *ngIf="isLoggedIn" class="flex items-center p-1 font-sans text-sm antialiased font-medium leading-normal gap-x-2 text-blue-gray-900">
+          <fa-icon [icon]="faUserGear"></fa-icon>
+          <a [routerLink]="['/profile']" class="flex items-center">Profil</a>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="!isLoggedIn" class="hidden lg:flex lg:items-center lg:gap-x-1">
+      <button
+        mat-flat-button
+        class="px-4 py-2 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        type="button"
+        routerLink="/login"
+      >
+        <span>Bejelentkezés</span>
+      </button>
+      <button
+        mat-flat-button
+        class="select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        type="button"
+        routerLink="/register"
+      >
+        <span>Regisztráció</span>
+      </button>
+    </div>
+    <div *ngIf="isLoggedIn" class="hidden lg:flex lg:items-center lg:gap-x-1">
+      <button
+        mat-flat-button
+        class="px-4 py-2 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        type="button"
+        (click)="logout()"
+      >
+        <span>Kijelentkezés</span>
+      </button>
+    </div>
+    <button
+      class="relative ml-auto h-6 max-h-[40px] w-6 max-w-[40px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-inherit transition-all hover:bg-transparent focus:bg-transparent active:bg-transparent disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:hidden"
+      type="button"
+      (click)="toggleCollapsed()"
+    >
+      <fa-icon [icon]="faBars"></fa-icon>
+    </button>
+  </div>
+  <div [ngClass]="{'block': isCollapsed, 'hidden': !isCollapsed}" class="lg:hidden flex flex-col items-center mt-4">
+    <ul class="flex flex-col items-center gap-2">
+      <li class="flex items-center p-1 font-sans text-sm antialiased font-medium leading-normal gap-x-2 text-blue-gray-900">
+        <fa-icon [icon]="faHouse"></fa-icon>
+        <a [routerLink]="['/']" class="flex items-center">Főoldal</a>
+      </li>
+      <li *ngIf="isLoggedIn" class="flex items-center p-1 font-sans text-sm antialiased font-medium leading-normal gap-x-2 text-blue-gray-900">
+        <fa-icon [icon]="faUserGear"></fa-icon>
+        <a [routerLink]="['/profile']" class="flex items-center">Profil</a>
+      </li>
+    </ul>
+    <div *ngIf="!isLoggedIn" class="flex flex-col items-center gap-2 mt-4">
+      <button
+        mat-flat-button
+        class="px-4 py-2 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        type="button"
+        routerLink="/login"
+      >
+        <span>Bejelentkezés</span>
+      </button>
+      <button
+        mat-flat-button
+        class="select-none rounded-lg bg-gradient-to-tr from-gray-900 to-gray-800 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        type="button"
+        routerLink="/register"
+      >
+        <span>Regisztráció</span>
+      </button>
+    </div>
+    <div *ngIf="isLoggedIn" class="flex flex-col items-center gap-2 mt-4">
+      <button
+        mat-flat-button
+        class="px-4 py-2 font-sans text-xs font-bold text-center text-gray-900 uppercase align-middle transition-all rounded-lg select-none hover:bg-gray-900/10 active:bg-gray-900/20 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+        type="button"
+        (click)="logout()"
+      >
+        <span>Kijelentkezés</span>
+      </button>
+    </div>
+  </div>
+</nav>

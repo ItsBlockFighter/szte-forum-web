@@ -1,0 +1,16 @@
+@if (!user) {
+  <app-loading></app-loading>
+} @else {
+  <div class="flex flex-col items-center space-y-3">
+    <div class="flex flex-col items-center space-y-3">
+      <app-user-avatar #avatar [userId]="user.id" [size]="32"></app-user-avatar>
+      <input #avatarInput type="file" (change)="onAvatarChange($event)" class="hidden" />
+      <button mat-raised-button color="primary" (click)="onUploadButtonClick()">Avatar feltöltése</button>
+    </div>
+    <div class="flex flex-col items-center">
+      <h1 class="text-2xl">{{ user.username }}</h1>
+      <p class="text-lg">{{ user.email }}</p>
+      <button mat-raised-button color="warn" (click)="onLogout()">Kijelentkezés</button>
+    </div>
+  </div>
+}
